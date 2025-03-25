@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 
 function App() {
-  const [isSmall, setIsSmall] = useState(true);
+  const [isSmall, setIsSmall] = useState(false);
   const [buttonWidth, setButtonWidth] = useState(100);
 
   const handleClick = () => {
     setIsSmall((prev) => !prev);
   };
+
   useEffect(() => {
     const intervalId = setInterval(() => {
       setButtonWidth((prev) => {
@@ -36,9 +37,10 @@ const GrowingButton = ({ handleClick, isSmall, buttonWidth }) => {
   return (
     <button
       onClick={handleClick}
-      className={`border-2  py-2 w-[${buttonWidth}px]  bg-blue-400`}
+      className={`border-2  py-2   bg-blue-400`}
+      style={{ width: buttonWidth }}
     >
-      {isSmall ? "Büyüt" : "Küçült"}
+      {isSmall ? "Küçült" : "Büyüt"}
     </button>
   );
 };
